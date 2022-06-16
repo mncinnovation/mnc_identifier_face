@@ -41,8 +41,6 @@ class _MyAppState extends State<MyApp> {
                 onPressed: () async {
                   livenessResult =
                       await _mncIdentifierFacePlugin.startLivenessDetection();
-                  if (!mounted) return;
-
                   setState(() {});
                 },
                 child: const Text("START LIVENESS IDENTIFIER"),
