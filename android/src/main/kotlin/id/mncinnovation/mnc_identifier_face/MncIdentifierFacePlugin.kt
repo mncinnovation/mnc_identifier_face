@@ -63,8 +63,7 @@ class MncIdentifierFacePlugin: FlutterPlugin, MethodCallHandler, ActivityAware, 
               var gson = Gson()
               result.success(gson.toJson(res))
             } else {  //Liveness Detection Error
-              
-              val errorMessage = res.errorMessage
+              result.error("Invalid request code", "Mnc-identifier-face: Received request code: $requestCode", "Expected request code: ${LIVENESS_DETECTION_REQUEST_CODE}_REQUEST_CODE")
             }
           }
         }

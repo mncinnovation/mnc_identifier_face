@@ -25,15 +25,16 @@ class LivenessDetectionResult {
   final bool isSuccess;
   final int totalTimeMilis;
 
-  factory LivenessDetectionResult.fromJson(Map<String, dynamic> json) =>
-      LivenessDetectionResult(
-        attempt: json["attempt"],
-        detectionResult: List<DetectionResult>.from(
-            json["detectionResult"].map((x) => DetectionResult.fromJson(x))),
-        errorMessage: json["errorMessage"] ?? "",
-        isSuccess: json["isSuccess"],
-        totalTimeMilis: json["totalTimeMilis"] ?? json["totalTimeMillis"],
-      );
+  factory LivenessDetectionResult.fromJson(Map<String, dynamic> json) {
+    return LivenessDetectionResult(
+      attempt: json["attempt"],
+      detectionResult: List<DetectionResult>.from(
+          json["detectionResult"].map((x) => DetectionResult.fromJson(x))),
+      errorMessage: json["errorMessage"] ?? "",
+      isSuccess: json["isSuccess"],
+      totalTimeMilis: json["totalTimeMilis"] ?? json["totalTimeMillis"],
+    );
+  }
 
   Map<String, dynamic> toJson() => {
         "attempt": attempt,
@@ -59,7 +60,7 @@ class DetectionResult {
   factory DetectionResult.fromJson(Map<String, dynamic> json) =>
       DetectionResult(
         detectionMode: json["detectionMode"],
-        image: json["image"],
+        image: json["image"].toString(),
         timeMilis: json["timeMilis"] ?? 1000,
       );
 
