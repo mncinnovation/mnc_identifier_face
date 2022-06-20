@@ -19,13 +19,6 @@ class _MyAppState extends State<MyApp> {
   final _mncIdentifierFacePlugin = MncIdentifierFace();
 
   @override
-  void initState() {
-    super.initState();
-  }
-
-  // Platform messages are asynchronous, so we initialize in an async method.
-
-  @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
@@ -36,7 +29,7 @@ class _MyAppState extends State<MyApp> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(livenessResult?.toJson().toString() ?? "Data masih kosong"),
+              Text(livenessResult?.toJson().toString() ?? "Data still empty"),
               ElevatedButton(
                 onPressed: () async {
                   livenessResult =
