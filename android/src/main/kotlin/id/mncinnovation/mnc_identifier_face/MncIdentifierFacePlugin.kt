@@ -44,6 +44,9 @@ class MncIdentifierFacePlugin: FlutterPlugin, MethodCallHandler, ActivityAware, 
   override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
     this.result = result
     if (call.method == "startLivenessDetection") {
+      //set 0 to disable low memory allocation warning popup
+      val lowMemoryThreshold = 0
+      MNCIdentifier.setLowMemoryThreshold(lowMemoryThreshold)
       activity.startActivityForResult(MNCIdentifier.getLivenessIntent(context), LIVENESS_DETECTION_REQUEST_CODE)
     } else {
       result.notImplemented()
@@ -59,7 +62,9 @@ class MncIdentifierFacePlugin: FlutterPlugin, MethodCallHandler, ActivityAware, 
           livenessResult?.let { res ->
             if (res.isSuccess) {  // check if liveness detection success
               // get image result
-              val bitmap = res.getBitmap(context, DetectionMode.SMILE)
+              val bitmap = res.getBitmap(context, DetectionMode.SMILE, onError = { message ->
+                result.error("Failed", "Mnc-identifier-face: $message", null)
+              })
               var gson = Gson()
               result.success(gson.toJson(res))
             } else {  //Liveness Detection Error
