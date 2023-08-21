@@ -49,24 +49,24 @@ class LivenessDetectionResult {
 class DetectionResult {
   DetectionResult({
     required this.detectionMode,
-    required this.image,
+    required this.imagePath,
     required this.timeMilis,
   });
 
   final String detectionMode;
-  final String image;
+  final String imagePath;
   final int timeMilis;
 
   factory DetectionResult.fromJson(Map<String, dynamic> json) =>
       DetectionResult(
         detectionMode: json["detectionMode"],
-        image: json["image"].toString(),
+        imagePath: json["imagePath"].toString(),
         timeMilis: json["timeMilis"] ?? 1000,
       );
 
   Map<String, dynamic> toJson() => {
         "detectionMode": detectionMode,
-        "image": image,
+        "imagePath": imagePath,
         "timeMilis": timeMilis,
       };
 }

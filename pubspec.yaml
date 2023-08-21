@@ -1,6 +1,6 @@
 name: mnc_identifier_face
 description: MNC liveness detection flutter plugin
-version: 0.0.1
+version: 1.0.2
 homepage: https://github.com/mncinnovation/mnc_identifier_face
 
 environment:
