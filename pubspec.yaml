@@ -4,7 +4,7 @@ version: 1.0.2
 homepage: https://github.com/mncinnovation/mnc_identifier_face
 
 environment:
-  sdk: ">=2.17.1 <3.0.0"
+  sdk: ">=2.17.1 <4.0.0"
   flutter: ">=2.5.0"
 
 dependencies:
